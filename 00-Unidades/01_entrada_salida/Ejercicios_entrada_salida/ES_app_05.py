@@ -40,7 +40,20 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
+        nombre_alumno = prompt("titulo", "ingrese el nombre")
+        edad_alumno = prompt("titulo", "ingrese la edad")
+        self.txt_nombre.delete(0, 30)
+        self.txt_nombre.delete(0, tkinter.END)
+        self.txt_nombre.delete(0, len(self.txt_nombre.get()))
+        self.txt_nombre.insert(0, nombre_alumno)
+        self.txt_edad.delete(0, 30)
+        self.txt_edad.delete(0, tkinter.END)
+        self.txt_edad.delete(0, len(self.txt_edad.get()))
+        self.txt_edad.insert(0, edad_alumno)
+        alert("titulo", nombre_alumno + edad_alumno)
+        
+
+
 
         
     
