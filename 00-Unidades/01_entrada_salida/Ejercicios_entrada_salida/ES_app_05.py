@@ -46,6 +46,12 @@ class App(customtkinter.CTk):
         self.txt_nombre.insert(0, nombre_alumno)
         self.txt_edad.delete(0, tkinter.END)
         self.txt_edad.insert(0, edad_alumno)
+        
+        #mensaje = f"Usted se llama: {nombre_alumno} y su edad es {edad_alumno}"
+        #mensaje = "Usted se llama {0} y su edad es {1} años".format(nombre_alumno, edad_alumno)
+        #mensaje = "Usted se llama " + nombre_alumno + " y su edad es " + edad_alumno " años"
+        #alert("titulo", mensaje)
+        
         alert("titulo", f"Usted se llama: {nombre_alumno} y su edad es {edad_alumno}")
         
 
