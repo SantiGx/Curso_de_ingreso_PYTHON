@@ -5,8 +5,8 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre: GOMEZ
+apellido: SANTIAGO
 ---
 TP: ES_Pinturas
 ---
@@ -40,7 +40,7 @@ class App(customtkinter.CTk):
         
         self.txt_temperatura_f = customtkinter.CTkEntry(master=self)
         self.txt_temperatura_f.grid(row=1, column=1)
-       
+
         self.btn_convertir_c_f = customtkinter.CTkButton(master=self, text="Convertir °C a °F", command=self.btn_convertir_c_f_on_click)
         self.btn_convertir_c_f.grid(row=3, pady=10, columnspan=2, sticky="nsew")
         
@@ -48,17 +48,28 @@ class App(customtkinter.CTk):
         self.btn_convertir_f_c.grid(row=4, pady=10, columnspan=2, sticky="nsew")
     
     def btn_convertir_c_f_on_click(self):
-        Fahrenheit = self.txt_temperatura_f.get
-        Celcius = (Fahrenheit - 32) * 5/9
-        mensaje = f"La temperatura en Celcius es " +str(Celcius) + " °C"
-        alert("RESULTADO", mensaje)
+        temperatura_c_str = self.txt_temperatura_c.get()
+        temperatura_f_str = self.txt_temperatura_f.get()
+        temperatura_c = float(temperatura_c_str)
+        temperatura_f = float(temperatura_f_str)
+        celcius_a_fahr = (temperatura_c * 9/5) + 32
+        self.txt_temperatura_f.delete(0, tkinter.END)
+        self.txt_temperatura_f.insert(0, celcius_a_fahr)
+        mensaje= f"Su temperatura en Fahrenheit es {celcius_a_fahr} °F "
+        alert("TEMPERATURA", mensaje)
 
 
     def btn_convertir_f_c_on_click(self):
-        Celcius = self.txt_temperatura_c.get
-        Fahrenheit = (Celcius * 9/5) + 32
-        mensaje = f"La temperatura en Fahrenheit es" + str(Fahrenheit) + " °C"
-        alert("RESULTADO", mensaje)
+        temperatura_c_str = self.txt_temperatura_c.get()
+        temperatura_f_str = self.txt_temperatura_f.get()
+        temperatura_c = float(temperatura_c_str)
+        temperatura_f = float(temperatura_f_str)
+        fahr_a_celcius = (temperatura_f - 32) * 5/9 
+        self.txt_temperatura_c.delete(0, tkinter.END)
+        self.txt_temperatura_c.insert(0, fahr_a_celcius)
+        mensaje= f"Su temperatura en Celcius es {fahr_a_celcius} °C "
+        alert("TEMPERATURA", mensaje)
+
     
     
 if __name__ == "__main__":
